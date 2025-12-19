@@ -1,55 +1,55 @@
 # 🏭 Industrial Optimizer: Multi-Block System
 
-Sistema inteligente de optimización industrial para gestión de inventarios complejos y cálculo de líneas de corte utilizando Inteligencia Artificial.
+An intelligent industrial optimization system for complex inventory management and cutting line calculations using Artificial Intelligence.
 
-## 📋 Descripción
+## 📋 Description
 
-**Industrial Optimizer** es una aplicación web construida con Streamlit que utiliza agentes de IA (GPT-4o-mini) para resolver problemas de optimización tipo "Bin Packing 3D". El sistema analiza inventarios de bloques de material y calcula los puntos de corte óptimos para satisfacer pedidos de clientes, minimizando el desperdicio.
+**Industrial Optimizer** is a web application built with Streamlit that uses AI agents (GPT-4o-mini) to solve "3D Bin Packing" optimization problems. The system analyzes material block inventories and calculates optimal cutting points to fulfill customer orders while minimizing waste.
 
-### Características principales
+### Key Features
 
-- 🤖 **Sistema Multi-Agente**: Dos agentes especializados colaboran para análisis técnico e informes ejecutivos
-- 📐 **Análisis Geométrico**: Cálculo preciso usando algoritmos "Big Rocks First" para optimización de corte
-- 📊 **Visualización Gráfica**: Representación visual de los planos de corte por bloque
-- 💾 **Persistencia**: Historial de predicciones almacenado en SQLite
-- 🎨 **Soporte Multi-Color**: Gestión de múltiples líneas de producción (Azul, Rojo, Verde, etc.)
+- 🤖 **Multi-Agent System**: Two specialized agents collaborate for technical analysis and executive reports
+- 📐 **Geometric Analysis**: Precise calculations using "Big Rocks First" algorithms for cut optimization
+- 📊 **Graphical Visualization**: Visual representation of cutting plans per block
+- 💾 **Persistence**: Prediction history stored in SQLite
+- 🎨 **Multi-Color Support**: Management of multiple production lines (Blue, Red, Green, etc.)
 
-## 🏗️ Arquitectura
+## 🏗️ Architecture
 
 ```
 industrial/
 ├── cuts/
-│   ├── app.py          # Aplicación principal Streamlit
-│   ├── agents.py       # Agentes de IA (Técnico + Gerente)
-│   ├── database.py     # Módulo de persistencia SQLite
-│   └── .env            # Variables de entorno (API Key)
-├── requirements.txt    # Dependencias del proyecto
-└── industrial_predictions.db  # Base de datos SQLite
+│   ├── app.py          # Main Streamlit application
+│   ├── agents.py       # AI Agents (Technical + Manager)
+│   ├── database.py     # SQLite persistence module
+│   └── .env            # Environment variables (API Key)
+├── requirements.txt    # Project dependencies
+└── industrial_predictions.db  # SQLite database
 ```
 
-### Agentes de IA
+### AI Agents
 
-| Agente | Rol | Función |
-|--------|-----|---------|
-| **Agente 1 - Planificador Técnico** | Análisis Geométrico | Calcula rejillas XY, valida dimensiones, genera JSON estructurado con capas y scrap |
-| **Agente 2 - Gerente de Optimización** | Informe Ejecutivo | Consolida resultados, genera instrucciones para operarios, gestiona incidencias |
+| Agent | Role | Function |
+|-------|------|----------|
+| **Agent 1 - Technical Planner** | Geometric Analysis | Calculates XY grids, validates dimensions, generates structured JSON with layers and scrap |
+| **Agent 2 - Optimization Manager** | Executive Report | Consolidates results, generates operator instructions, manages incidents |
 
-## 🚀 Instalación
+## 🚀 Installation
 
-### Prerrequisitos
+### Prerequisites
 
 - Python 3.8+
-- Una API Key de OpenAI
+- An OpenAI API Key
 
-### Pasos
+### Steps
 
-1. **Clonar el repositorio**
+1. **Clone the repository**
    ```bash
-   git clone <tu-repositorio>
-   cd industrial
+   git clone https://github.com/jcm-developer/industrial-agents.git
+   cd industrial-agents
    ```
 
-2. **Crear y activar entorno virtual**
+2. **Create and activate virtual environment**
    ```bash
    python -m venv venv
    
@@ -60,95 +60,95 @@ industrial/
    source venv/bin/activate
    ```
 
-3. **Instalar dependencias**
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Configurar variables de entorno**
+4. **Configure environment variables**
    
-   Crear archivo `.env` en la carpeta `cuts/`:
+   Create a `.env` file in the `cuts/` folder:
    ```env
-   OPENAI_API_KEY=tu_api_key_aqui
+   OPENAI_API_KEY=your_api_key_here
    ```
 
-## ▶️ Uso
+## ▶️ Usage
 
-1. **Ejecutar la aplicación**
+1. **Run the application**
    ```bash
    cd cuts
    streamlit run app.py
    ```
 
-2. **Acceder a la interfaz**
+2. **Access the interface**
    
-   Abrir en el navegador: `http://localhost:8501`
+   Open in browser: `http://localhost:8501`
 
-3. **Ingresar una descripción del problema industrial**
+3. **Enter an industrial problem description**
    
-   Ejemplo de entrada:
+   Input example:
    ```
-   INVENTARIO:
-   - Bloque Azul: 6000mm x 200mm x 200mm
-   - Bloque Rojo: 4000mm x 150mm x 150mm
+   INVENTORY:
+   - Blue Block: 6000mm x 200mm x 200mm
+   - Red Block: 4000mm x 150mm x 150mm
    
-   PEDIDOS:
-   - Cliente A: 50 piezas azules de 100mm x 50mm x 20mm
-   - Cliente B: 30 piezas rojas de 80mm x 40mm x 15mm
+   ORDERS:
+   - Customer A: 50 blue pieces of 100mm x 50mm x 20mm
+   - Customer B: 30 red pieces of 80mm x 40mm x 15mm
    ```
 
-4. **Ver resultados**
-   - Análisis técnico detallado con razonamiento Chain-of-Thought
-   - Informe ejecutivo para gestión
-   - Visualización gráfica de los planos de corte
+4. **View results**
+   - Detailed technical analysis with Chain-of-Thought reasoning
+   - Executive report for management
+   - Graphical visualization of cutting plans
 
-## 📦 Dependencias
+## 📦 Dependencies
 
-| Paquete | Uso |
-|---------|-----|
-| `streamlit` | Framework de interfaz web |
-| `openai` | Cliente API de OpenAI |
-| `pandas` | Manejo de datos tabulares |
-| `python-dotenv` | Gestión de variables de entorno |
-| `matplotlib` | Generación de gráficos |
+| Package | Usage |
+|---------|-------|
+| `streamlit` | Web interface framework |
+| `openai` | OpenAI API client |
+| `pandas` | Tabular data handling |
+| `python-dotenv` | Environment variable management |
+| `matplotlib` | Chart generation |
 
-## 🗄️ Base de Datos
+## 🗄️ Database
 
-El sistema utiliza SQLite para persistir el historial de predicciones:
+The system uses SQLite to persist prediction history:
 
 ```sql
 CREATE TABLE industrial_predictions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    client_req TEXT,           -- Descripción del pedido
-    first_review TEXT,         -- Análisis del Agente 1
-    second_review TEXT         -- Informe del Agente 2
+    client_req TEXT,           -- Order description
+    first_review TEXT,         -- Agent 1 analysis
+    second_review TEXT         -- Agent 2 report
 );
 ```
 
-## 🔧 Configuración Avanzada
+## 🔧 Advanced Configuration
 
-### Cambiar modelo de IA
+### Change AI model
 
-En `agents.py`, modificar la línea:
+In `agents.py`, modify the line:
 ```python
-model="gpt-4o-mini"  # Cambiar a "gpt-4o" para mayor precisión
+model="gpt-4o-mini"  # Change to "gpt-4o" for higher precision
 ```
 
-### Ajustar temperatura
+### Adjust temperature
 
 ```python
-temperature=0.2  # 0.0 = más determinista, 1.0 = más creativo
+temperature=0.2  # 0.0 = more deterministic, 1.0 = more creative
 ```
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está bajo la Licencia MIT.
+This project is under the MIT License.
 
-## 🤝 Contribuciones
+## 🤝 Contributing
 
-Las contribuciones son bienvenidas. Por favor, abre un issue para discutir cambios mayores antes de enviar un PR.
+Contributions are welcome. Please open an issue to discuss major changes before submitting a PR.
 
 ---
 
-**Desarrollado con ❤️ utilizando Streamlit + OpenAI**
+**Built with ❤️ using Streamlit + OpenAI**
